@@ -1,9 +1,15 @@
 package com.ns.springdatajpa.entity.many2many;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ns.springdatajpa.entity.base.BaseEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,7 +25,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table
+@NoArgsConstructor
 public class Student extends BaseEntity {
 	private String name;
 
@@ -29,7 +35,12 @@ public class Student extends BaseEntity {
 	 *  joinColumns = @JoinColumn(name = "student_id"),
 	 * 	inverseJoinColumns = @JoinColumn(name = "course_id"))
 	 */
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	@JoinTable(name = "student_course")
+//	@JSONField(serialize = false)
 	private List<Course> courseList;
+
+	public Student(String name) {
+		this.name = name;
+	}
 }

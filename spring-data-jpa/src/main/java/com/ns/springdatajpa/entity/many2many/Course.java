@@ -1,8 +1,12 @@
 package com.ns.springdatajpa.entity.many2many;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ns.springdatajpa.entity.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +21,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@NoArgsConstructor
 public class Course extends BaseEntity {
+	@Column(unique = true)
 	private String code;
 	/**
 	 * 通过column 设置一些列的属性: 列名, 长度, 精度, 唯一性, 非空属性等
@@ -25,7 +31,12 @@ public class Course extends BaseEntity {
 	@Column(name = "course_credit")
 	private Integer credit;
 
+//	@JSONField(serialize = false)
 	@ManyToMany(mappedBy = "courseList")
 	private List<Student> studentList;
 
+	public Course(String code, int credit) {
+		this.code = code;
+		this.credit = credit;
+	}
 }

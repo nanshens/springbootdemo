@@ -3,6 +3,7 @@ package com.ns.springdatajpa.entity.many2one;
 import com.ns.springdatajpa.entity.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table
+@NoArgsConstructor
 public class Customer extends BaseEntity {
+	private String name;
 }
