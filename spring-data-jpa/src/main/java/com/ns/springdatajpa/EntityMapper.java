@@ -16,7 +16,7 @@ import java.util.List;
 public class EntityMapper {
 
 	/**
-	 * 通过有参构造函数映射
+	 * 通过有参构造函数映射(基本类型)
 	 *
 	 * */
 	public static <T> List<T> mapping(List<Object[]> list, Class<T> clazz, int tag) {
@@ -40,7 +40,7 @@ public class EntityMapper {
 	}
 
 	/**
-	 * 通过无参构造函数映射
+	 * 通过无参构造函数映射(基本类型)
 	 * 有参构造函数重复时,使用set方法注入
 	 * */
 	public static <T> List<T> mapping(List<Object[]> list, Class<T> clazz, String ...properties) {
