@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ns</groupId>
-        <artifactId>springboot-web-core</artifactId>
+        <artifactId>springboot-demo</artifactId>
         <version>0.0.1</version>
     </parent>
     <artifactId>spring-data-jpa</artifactId>
@@ -24,14 +24,5 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
