@@ -1,5 +1,12 @@
 # this is demo for java
 
-### springboot version: 2.3.0.RELEASE
+## 简介
+此项目为Spring Boot
 
-add project link
+## jar
+springboot 2.3.0.RELEASE
+spring-boot-starter-web
+spring-boot-devtools
+spring-boot-starter-test
+fastjson
+lombok
