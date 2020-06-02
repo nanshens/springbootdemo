@@ -67,6 +67,10 @@ class Many2OneTests {
 		System.out.println();
 	}
 
+	/**
+	 * 问题9
+	 *
+	 */
 	@Test
 	void select1() {
 		List<SalesOrderVO> salesOrders = salesOrderRepo.findAllByJpql();
@@ -78,7 +82,7 @@ class Many2OneTests {
 		System.out.println();
 	}
 
-	/**
+	/** 问题7
 	 * jpa 用Specification来支持复杂查询, 但使用和编码不太友好, 这里进行简单演示
 	 * 对于经常使用Specification的项目,强烈建议对其封装,原生写法是真的难用
 	 * (本作者进行了简单封装,现还在维护中,也上传了中央仓库, 项目地址为: https://github.com/nanshens/jpa-starter)

@@ -55,7 +55,7 @@ class Many2ManyTests {
 		studentRepo.save(student);
 	}
 
-	/**
+	/** 问题4
 	 * 查询被维护端数据, 因为实体循环引用, 序列化会引起stackoverflow,
 	 * 选择自定义序列化方式, 过滤掉循环引用的属性.
 	 * 也可以在entity上用注解配置,灵活性不大,请自行选择.
@@ -88,7 +88,7 @@ class Many2ManyTests {
 	void updateCourse() {
 	}
 
-	/**
+	/** 问题3
 	 * 维护端数据更新,
 	 * 维护端级联类型
 	 * 不填: 更新可以更新到被维护端数据, 不能新建被维护端数据(抛异常), 删除只是删除中间表信息, 不会删除被维护端数据
