@@ -4,6 +4,7 @@ package com.ns.springdatajpaquerydsl.repo.base;
 import com.ns.springdatajpaquerydsl.entity.base.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
 
 /**
@@ -14,6 +15,6 @@ import org.springframework.data.repository.NoRepositoryBean;
  * JpaSpecificationExecutor 添加复杂查询的能力
  */
 @NoRepositoryBean
-public interface BaseRepository<T extends BaseEntity, ID> extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
+public interface BaseRepository<T extends BaseEntity, ID> extends JpaRepository<T, ID>, JpaSpecificationExecutor<T>, QuerydslPredicateExecutor<T> {
 //	Optional<T> findByCode(String code);
 }
