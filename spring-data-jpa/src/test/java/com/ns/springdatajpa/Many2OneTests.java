@@ -22,6 +22,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.annotation.Rollback;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
@@ -38,7 +39,7 @@ import java.util.List;
 class Many2OneTests {
 	@Autowired private CustomerRepo customerRepo;
 	@Autowired private SalesOrderRepo salesOrderRepo;
-
+	@Autowired private EntityManager entityManager;
 
 	@Test
 	void addCustomer() {

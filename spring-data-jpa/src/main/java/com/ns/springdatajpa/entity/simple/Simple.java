@@ -15,6 +15,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -101,4 +102,11 @@ public class Simple extends BaseEntity {
 	 */
 	@Column(columnDefinition = "numeric(19,4)")
 	private BigDecimal amount;
+
+
+	/**
+	 * jpa将忽略属性,不生成表结构, 多用与一些根据其他属性计算而来的属性,避免重复计算
+	 */
+	@Transient
+	private LocalDate startDate;
 }
