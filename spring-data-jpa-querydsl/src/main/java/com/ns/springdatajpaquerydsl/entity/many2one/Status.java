@@ -1,4 +1,4 @@
-package com.ns.springdatajpaquerydsl.entity.simple;
+package com.ns.springdatajpaquerydsl.entity.many2one;
 
 
 /**

@@ -5,7 +5,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.time.LocalDate;
 
 /**
  * @author ns
@@ -15,7 +19,12 @@ import javax.persistence.Entity;
 @Data
 @Entity
 @NoArgsConstructor
-public class Customer extends BaseEntity {
-	private String name;
-	public static final Customer customer = new Customer();
+public class PurchaseOrder extends BaseEntity {
+	private String soId;
+	private String code;
+	private Integer number;
+	private LocalDate date;
+	private Boolean active;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 }

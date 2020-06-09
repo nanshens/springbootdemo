@@ -2,6 +2,7 @@ package com.ns.springdatajpaquerydsl.entity.simple;
 
 
 import com.ns.springdatajpaquerydsl.entity.base.BaseEntity;
+import com.ns.springdatajpaquerydsl.entity.many2one.Status;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedBy;

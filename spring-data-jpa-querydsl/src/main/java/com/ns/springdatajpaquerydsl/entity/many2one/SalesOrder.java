@@ -32,6 +32,7 @@ public class SalesOrder extends BaseEntity {
 	private Integer age;
 	private Boolean active;
 	private LocalDate date;
+	private Status status;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Customer customer;
