@@ -23,6 +23,11 @@
         <module>springboot</module>
         <module>spring-data-jpa</module>
         <module>spring-data-jpa-querydsl</module>
+        <module>mybatis</module>
+        <module>mybatis-mybatisplus</module>
+        <module>shiro</module>
+        <module>spring-security</module>
+        <module>swagger</module>
     </modules>
 
     <dependencies>
