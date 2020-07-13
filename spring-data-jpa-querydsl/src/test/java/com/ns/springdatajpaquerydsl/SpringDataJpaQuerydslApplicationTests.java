@@ -274,31 +274,22 @@ class SpringDataJpaQuerydslApplicationTests {
 		QCustomer qCustomer = QCustomer.customer;
 		QPurchaseOrder qPurchaseOrder = QPurchaseOrder.purchaseOrder;
 
-		/*
-		 *
-		 * */
-		System.out.println("----------普通查询-------------");
-		List<SalesOrder> sol1 = queryFactory.selectFrom(qSalesOrder).fetch();
-		System.out.println("----------普通查询-------------");
-
-		//写法一
+		System.out.println("----------排序, 分页-------------");
 		JPAQuery<SalesOrder> query = queryFactory
 				.selectFrom(qSalesOrder)
 				.orderBy(qSalesOrder.age.asc());
-		long total = query.fetchCount();//fetchCount的时候上面的orderBy不会被执行
-		List<SalesOrder> list0= query.offset(2).limit(5).fetch();
-		//写法二
+		long total1 = query.fetchCount();
+		List<SalesOrder> list1 = query.offset(2).limit(5).fetch();
+
+
 		QueryResults<SalesOrder> results = queryFactory
 				.selectFrom(qSalesOrder)
 				.orderBy(qSalesOrder.age.asc())
 				.offset(2).limit(5)
 				.fetchResults();
-		List<SalesOrder> list = results.getResults();
-
-		List<SalesOrder> orderList = queryFactory
-				.selectFrom(qSalesOrder)
-				.orderBy(qSalesOrder.name.asc())
-				.fetch();
+		long total2 = results.getTotal();
+		List<SalesOrder> list2 = results.getResults();
+		System.out.println("----------排序, 分页-------------");
 	}
 
 	/**
@@ -310,13 +301,7 @@ class SpringDataJpaQuerydslApplicationTests {
 		QCustomer qCustomer = QCustomer.customer;
 		QPurchaseOrder qPurchaseOrder = QPurchaseOrder.purchaseOrder;
 
-		/*
-		 *
-		 * */
-		System.out.println("----------普通查询-------------");
-		List<SalesOrder> sol1 = queryFactory.selectFrom(qSalesOrder).fetch();
-		System.out.println("----------普通查询-------------");
-
+		System.out.println("----------分组, 聚合-------------");
 		long count = queryFactory
 				.select(qSalesOrder.id.count())
 				.from(qSalesOrder)
@@ -327,12 +312,13 @@ class SpringDataJpaQuerydslApplicationTests {
 				.from(qSalesOrder)
 				.fetchOne();
 
-		List<SalesOrder> salesOrders = queryFactory
-				.select(qSalesOrder)
+		List<Integer> salesOrders = queryFactory
+				.select(qSalesOrder.age)
 				.from(qSalesOrder)
 				.groupBy(qSalesOrder.age)
-				.having(qSalesOrder.age.gt(22))
+				.having(qSalesOrder.age.gt(10))
 				.fetch();
+		System.out.println("----------分组, 聚合-------------");
 	}
 
 	/**
@@ -344,21 +330,17 @@ class SpringDataJpaQuerydslApplicationTests {
 		QCustomer qCustomer = QCustomer.customer;
 		QPurchaseOrder qPurchaseOrder = QPurchaseOrder.purchaseOrder;
 
-		/*
-		 *
-		 * */
-		Iterable<SalesOrder> iterable = salesOrderRepo.findAll(qSalesOrder.name.eq("0013"));
+		Iterable<SalesOrder> iterable = salesOrderRepo.findAll(qSalesOrder.name.eq("n1"));
 
 		BooleanBuilder builder = new BooleanBuilder();
-		builder.and(qSalesOrder.name.like('%'+"Jack"+'%'))
-				.and(qSalesOrder.code.eq("0013"))
-				.and(qSalesOrder.age.between(20, 30));
+		builder.and(qSalesOrder.code.eq("so1"))
+				.and(qSalesOrder.age.between(12, 20))
+				.and(qSalesOrder.name.like("%n%"))
+				.and(qSalesOrder.status.in(Status.Closed, Status.Completed));
 
 		OrderSpecifier<Integer> order = new OrderSpecifier<>(Order.DESC, qSalesOrder.age);
+		OrderSpecifier<String> order1 = new OrderSpecifier<>(Order.DESC, qSalesOrder.code);
 
-//		Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "age"));
-
-//		Iterable<SalesOrder> iterable1 = salesOrderRepo.findAll(builder, sort);
-		Iterable<SalesOrder> iterable2 = salesOrderRepo.findAll(builder, order);
+		Iterable<SalesOrder> iterable2 = salesOrderRepo.findAll(builder, order, order1);
 	}
 }
