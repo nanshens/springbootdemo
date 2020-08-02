@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ns.mybatis.mapper.SalesOrderMapper">
+    <resultMap id="SalesOrderMap" type="com.ns.mybatis.entity.SalesOrder" >
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <association property="customer" javaType="com.ns.mybatis.entity.Customer">
+            <id column="cus_id" property="id" />
+            <result column="cus_name" property="name" />
+            <result column="cus_code" property="code" />
+            <result column="cus_phone" property="phone" />
+        </association>
+    </resultMap>
+
+    <sql id="SalesOrderSelect">
+        so.*, cus.id as cus_id, cus.name as cus_name, cus.code as cus_code, cus.phone as cus_phone
+    </sql>
+    <select id="findById" resultMap="SalesOrderMap" parameterType="string">
+        select 
+        <include refid="SalesOrderSelect"></include>
+        from sales_order so, customer cus
+        where so.customer_id = cus.id and so.id = #{so_id}
+    </select>
+</mapper>
