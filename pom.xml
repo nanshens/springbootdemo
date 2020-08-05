@@ -28,6 +28,7 @@
         <module>shiro</module>
         <module>spring-security</module>
         <module>swagger</module>
+        <module>rest-repositories</module>
     </modules>
 
     <dependencies>
