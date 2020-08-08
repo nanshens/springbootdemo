@@ -29,6 +29,7 @@
         <module>spring-security</module>
         <module>swagger</module>
         <module>rest-repositories</module>
+        <module>rabbitmq</module>
     </modules>
 
     <dependencies>
