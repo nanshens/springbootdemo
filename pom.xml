@@ -30,6 +30,8 @@
         <module>swagger</module>
         <module>rest-repositories</module>
         <module>rabbitmq</module>
+        <module>dynamic-datasource</module>
+        <module>jpa-multi-datasource</module>
     </modules>
 
     <dependencies>

@@ -1,0 +1,36 @@
+server:
+  port: 54546
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        master:
+          url: jdbc:postgresql://127.0.0.1:5432/dynamic_datasource_master
+          username: postgres
+          password: dl123
+          type: com.alibaba.druid.pool.DruidDataSource
+#          driver-class-name: org.postgresql.Driver # 3.2.0开始支持SPI可省略此配置
+        slave_1:
+          url: jdbc:postgresql://127.0.0.1:5432/dynamic_datasource_slave_1
+          username: postgres
+          password: dl123
+#          driver-class-name: org.postgresql.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+        slave_2:
+          url: jdbc:postgresql://127.0.0.1:5432/dynamic_datasource_slave_2 # 内置加密,使用请查看详细文档
+          username: ENC(Is8Wv3O/Dw+cNKuLyFcGhsdkjCk7TJB0KS65JpLK8F4mv9T0LSxIqyHFzM4Q3GBchEP+L5HPzKsrWI/tF53rzA==)
+          password: ENC(GDUJ4fuLSGpuTPuNbJO5E8GeQ9B/kkItdr37ccu2BFSJurq2fitbdACvw1euXdvbSxWIU1LhMQaJ3oNBlB+u9w==)
+          type: com.zaxxer.hikari.HikariDataSource
+#          driver-class-name: org.postgresql.Driver
+#          schema: db/schema.sql # 配置则生效,自动初始化表结构
+#          data: db/data.sql # 配置则生效,自动初始化数据
+#          continue-on-error: true # 默认true,初始化失败是否继续
+#          separator: ";" # sql默认分号分隔符
