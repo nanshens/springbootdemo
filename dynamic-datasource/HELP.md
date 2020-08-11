@@ -23,9 +23,9 @@ https://github.com/baomidou/dynamic-datasource-spring-boot-starter/wiki
         <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
         <version>3.2.0</version>
     </dependency>
-    <dependency>-->
-        <groupId>com.alibaba</groupId>-->
-        <artifactId>druid-spring-boot-starter</artifactId>-->
-        <version>1.1.23</version>-->
-    </dependency>-->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.23</version>
+    </dependency>
 ```
