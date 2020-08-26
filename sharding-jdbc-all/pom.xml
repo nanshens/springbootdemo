@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ns</groupId>
+        <artifactId>springboot-demo</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>sharding-jdbc-all</artifactId>
+    <version>0.0.1</version>
+    <name>sharding-jdbc-all</name>
+    <description>Demo project for Spring Boot</description>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>sharding-jdbc-core</module>
+        <module>sharding-jdbc-starter</module>
+        <module>sharding-sphere</module>
+        <module>sharding-sphere-readwrite-masking</module>
+    </modules>
+
+</project>
