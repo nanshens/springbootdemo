@@ -66,7 +66,7 @@ public class JpaConfigOne {
     }
 
 
-
+    
 
     private Map getVendorProperties() {
         return hibernateProperties.determineHibernateProperties(jr.getProperties(), new HibernateSettings());
