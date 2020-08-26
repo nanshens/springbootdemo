@@ -32,6 +32,12 @@
         <module>rabbitmq</module>
         <module>dynamic-datasource</module>
         <module>jpa-multi-datasource</module>
+        <module>flyway</module>
+        <module>jooq</module>
+        <module>redis</module>
+        <module>http</module>
+        <module>rpc</module>
+        <module>sharding-jdbc-all</module>
     </modules>
 
     <dependencies>
