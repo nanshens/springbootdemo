@@ -15,7 +15,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class BaseEntity {
 	@Id
-	@GenericGenerator(name = "snowflake", strategy = "com.ns.shardingjdbccore.config.CustomIdGenerator")
+	@GenericGenerator(name = "snowflake", strategy = "com.ns.shardingspherereadwritemasking.config.SnowFlakeIdGenerator")
 	@GeneratedValue(generator = "snowflake")
 	private long id;
 }
