@@ -45,7 +45,7 @@ public class SphereAndReadWriteAndMaskingDSConfig {
 //        shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("order_id", new PreciseModuloShardingTableAlgorithm()));
 //        shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("id", new ModuloShardingTableAlgorithm()));
         shardingRuleConfig.setMasterSlaveRuleConfigs(getMasterSlaveRuleConfigurations());
-//        shardingRuleConfig.setEncryptRuleConfig(getEncryptRuleConfiguration());
+        shardingRuleConfig.setEncryptRuleConfig(getEncryptRuleConfiguration());
         return ShardingDataSourceFactory.createDataSource(createDataSourceMap(), shardingRuleConfig, new Properties());
     }
 
@@ -69,6 +69,12 @@ public class SphereAndReadWriteAndMaskingDSConfig {
 //        result.setTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("sales_order_id", new ModuloShardingTableAlgorithm()));
         return result;
     }
+    TableRuleConfiguration getItemTableRuleConfig() {
+        TableRuleConfiguration result = new TableRuleConfiguration("item", "ds${0..1}.item");
+//        result.setEncryptorConfig(new EncryptorConfiguration("MD5", "status", new Properties()));
+        return result;
+    }
+
 
     List<MasterSlaveRuleConfiguration> getMasterSlaveRuleConfigurations() {
         MasterSlaveRuleConfiguration masterSlaveRuleConfig1 = new MasterSlaveRuleConfiguration("ds0", "ds_master_0", Arrays.asList("ds_master_0_slave_0", "ds_master_0_slave_1"));
@@ -76,17 +82,17 @@ public class SphereAndReadWriteAndMaskingDSConfig {
         return Lists.newArrayList(masterSlaveRuleConfig1, masterSlaveRuleConfig2);
     }
 
-//    private static EncryptRuleConfiguration getEncryptRuleConfiguration() {
-//        Properties props = new Properties();
-//        props.setProperty("aes.key.value", "123456");
-//        EncryptorRuleConfiguration encryptorConfig = new EncryptorRuleConfiguration("AES", props);
-//        EncryptColumnRuleConfiguration columnConfig = new EncryptColumnRuleConfiguration("plain_pwd", "cipher_pwd", "", "aes");
-//        EncryptTableRuleConfiguration tableConfig = new EncryptTableRuleConfiguration(Collections.singletonMap("name", columnConfig));
-//        EncryptRuleConfiguration encryptRuleConfig = new EncryptRuleConfiguration();
-//        encryptRuleConfig.getEncryptors().put("aes", encryptorConfig);
-//        encryptRuleConfig.getTables().put("item", tableConfig);
-//        return encryptRuleConfig;
-//    }
+    private static EncryptRuleConfiguration getEncryptRuleConfiguration() {
+        Properties props = new Properties();
+        props.setProperty("aes.key.value", "123456");
+        EncryptorRuleConfiguration encryptorConfig = new EncryptorRuleConfiguration("aes", props);
+        EncryptColumnRuleConfiguration columnConfig = new EncryptColumnRuleConfiguration("", "name", "", "aes");
+        EncryptTableRuleConfiguration tableConfig = new EncryptTableRuleConfiguration(Collections.singletonMap("name", columnConfig));
+        EncryptRuleConfiguration encryptRuleConfig = new EncryptRuleConfiguration();
+        encryptRuleConfig.getEncryptors().put("aes", encryptorConfig);
+        encryptRuleConfig.getTables().put("item", tableConfig);
+        return encryptRuleConfig;
+    }
 
     Map<String, DataSource> createDataSourceMap() {
         final Map<String, DataSource> result = new HashMap<>(6);

@@ -1,4 +1,9 @@
-CREATE DATABASE demo_sharding_sphere_ds0;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m0;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m0s0;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m0s1;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m1;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m1s0;
+CREATE DATABASE demo_sharding_sphere_readwrite_masking_m1s1;
 
 -----------
 CREATE TABLE if not exists public.customer
@@ -25,6 +30,8 @@ CREATE TABLE if not exists public.item
         id int8,
     name varchar(255),
     unit varchar(255),
+    name_plain varchar(255),
+    name_cipher varchar(255),
     PRIMARY KEY(id)
 );
 

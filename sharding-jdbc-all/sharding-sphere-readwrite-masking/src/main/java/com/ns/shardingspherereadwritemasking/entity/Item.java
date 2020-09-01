@@ -17,4 +17,6 @@ import javax.persistence.Entity;
 public class Item extends BaseEntity {
     private String name;
     private String unit;
+    private String namePlain;
+    private String nameCipher;
 }

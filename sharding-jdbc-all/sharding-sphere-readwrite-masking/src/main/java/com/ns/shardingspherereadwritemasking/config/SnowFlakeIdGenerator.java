@@ -15,5 +15,6 @@ public class SnowFlakeIdGenerator implements IdentifierGenerator {
     @Override
     public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
         return SnowFlakeIdWorker.get().nextId();
+//        return 1300361207076618241L;
     }
 }
