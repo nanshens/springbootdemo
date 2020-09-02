@@ -16,7 +16,15 @@
 9. 自定义sql查询的实体映射问题(com.ns.springdatajpa.EntityMapper, src/test/java/com/ns/springdatajpa/Many2OneTests)
 
 ## jar
-继承springboot-web-core
+``` xml
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
 
-spring-boot-starter-data-jpa
-postgresql
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```

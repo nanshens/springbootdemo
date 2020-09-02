@@ -71,7 +71,7 @@ public class Simple extends BaseEntity {
 	@LastModifiedBy
 	@Column(name = "modify_by")
 	private String modifyBy;
-
+	private long ids;
 
 	/**
 	 * 嵌入一个普通类, 如地址信息在多个实体中运用,但不作为实体创建, 使用AttributeOverrides可以复写属性名

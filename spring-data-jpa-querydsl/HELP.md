@@ -15,7 +15,26 @@ QueryDsl 使用面向对象思想, 构建复杂查询语句的一种sql增强库
 4. 子查询
 
 ## jar
-spring-boot-starter-data-jpa
-postgresql
-querydsl-jpa
-querydsl-apt
+``` xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
+<dependency>
+    <groupId>com.querydsl</groupId>
+    <artifactId>querydsl-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.querydsl</groupId>
+    <artifactId>querydsl-apt</artifactId>
+    <scope>provided</scope>
+</dependency>
+```
