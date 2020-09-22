@@ -38,6 +38,7 @@
         <module>http</module>
         <module>rpc</module>
         <module>sharding-jdbc-all</module>
+        <module>caffeine-cache</module>
     </modules>
 
     <dependencies>
